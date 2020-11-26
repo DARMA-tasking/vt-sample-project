@@ -23,5 +23,4 @@ add_executable(
   ${HEADER_FILES} ${SOURCE_FILES}
 )
 
-target_include_directories(vt-sample PUBLIC vt::runtime::vt)
-target_link_directories(vt-sample PUBLIC vt::runtime::vt)
+target_link_libraries(vt-sample PUBLIC vt::runtime::vt)

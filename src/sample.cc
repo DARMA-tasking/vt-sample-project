@@ -46,13 +46,15 @@
 #include "sample.h"
 
 #include <vt/transport.h>
+#include <fmt/format.h>
 
 #include <cassert>
 
 namespace sample {
 
 static void handler(MyMsg* msg) {
-  assert(msg->v_.size() == 10 && "Must be the correct size");
+  fmt::print("{}: running handler\n", vt::theContext()->getNode());
+  assert(msg->v_.size() == 100 && "Must be the correct size");
   for (int i = 0; i < 100; i++) {
     assert(msg->v_.at(i) == i && "Must be equal");
   }
@@ -61,10 +63,12 @@ static void handler(MyMsg* msg) {
 } /* end namespace sample */
 
 int main(int argc, char** argv) {
-  vt::initialize();
+  vt::initialize(argc, argv);
 
   auto this_node = vt::theContext()->getNode();
-  auto num_ndoes = vt::theContext()->getNumNodes();
+  auto num_nodes = vt::theContext()->getNumNodes();
+
+  fmt::print("{}: running sample program: num_nodes={}\n", this_node, num_nodes);
 
   if (this_node == 0 && num_nodes > 1) {
     auto msg = vt::makeMessage<sample::MyMsg>();

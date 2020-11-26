@@ -52,11 +52,14 @@
 namespace sample {
 
 struct MyMsg : vt::Message {
+  using MessageParentType = vt::Message;
+  vt_msg_serialize_required(); // for std::vector
 
   MyMsg() = default;
 
   template <typename SerializerT>
   void serialize(SerializerT& s) {
+    MessageParentType::serialize(s);
     s | v_;
   }
 
