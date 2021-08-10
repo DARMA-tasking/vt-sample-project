@@ -42,5 +42,5 @@ add_executable(
 
 target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC detector)
 target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC checkpoint)
-target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC vt::vt-trace)
+target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC vt-trace)
 ############################################################
