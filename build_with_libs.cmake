@@ -1,6 +1,14 @@
 message(STATUS "Building with libraries")
 
+find_package(detector REQUIRED)
+find_package(checkpoint REQUIRED)
 find_package(vt REQUIRED)
+find_package(MPI REQUIRED)
+
+include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+include_directories(${VT_INCLUDE_DIRS})
+include_directories(${CHECKPOINT_INCLUDE_DIRS})
+include_directories(${DETECTOR_INCLUDE_DIRS})
 
 #################### VT RUNTIME SAMPLE #####################
 set(RUNTIME_SAMPLE vt-runtime-sample)
@@ -22,5 +30,5 @@ add_executable(
   "${CMAKE_SOURCE_DIR}/vt-trace-only/src/sample.cc"
 )
 
-target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC vt::vt-trace)
+target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC vt-trace)
 ############################################################
