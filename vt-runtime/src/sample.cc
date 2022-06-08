@@ -46,7 +46,6 @@
 #include "sample.h"
 
 #include <vt/transport.h>
-#include <fmt/format.h>
 
 #include <cassert>
 
