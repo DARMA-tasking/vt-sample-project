@@ -69,12 +69,12 @@ int main(int argc, char** argv) {
 
   fmt::print("{}: running sample program: num_nodes={}\n", this_node, num_nodes);
 
-  if (this_node == 0 && num_nodes > 1) {
+  if (this_node == vt::NodeT{0} && num_nodes > vt::NodeT{1}) {
     auto msg = vt::makeMessage<sample::MyMsg>();
     for (int i = 0; i < 100; i++) {
       msg->v_.push_back(i);
     }
-    vt::theMsg()->sendMsg<sample::MyMsg, sample::handler>(1, msg);
+    vt::theMsg()->sendMsg<sample::MyMsg, sample::handler>(vt::NodeT{1}, msg);
   }
 
   vt::finalize();
