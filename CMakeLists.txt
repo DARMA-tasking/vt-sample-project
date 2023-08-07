@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
 project(vt-sample)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 option(build_with_tpl "Build sample project using vt source code" OFF)
 option(build_with_libs "Build sample project using vt compiled to library" OFF)
