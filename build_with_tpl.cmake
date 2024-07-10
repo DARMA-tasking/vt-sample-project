@@ -20,7 +20,7 @@ add_executable(
   "${CMAKE_SOURCE_DIR}/vt-runtime/src/sample.cc"
 )
 
-target_link_libraries(${RUNTIME_SAMPLE} PUBLIC checkpoint)
+target_link_libraries(${RUNTIME_SAMPLE} PUBLIC magistrate)
 target_link_libraries(${RUNTIME_SAMPLE} PUBLIC vt)
 ############################################################
 
@@ -32,6 +32,6 @@ add_executable(
   "${CMAKE_SOURCE_DIR}/vt-trace-only/src/sample.cc"
 )
 
-target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC checkpoint)
+target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC magistrate)
 target_link_libraries(${TRACE_ONLY_SAMPLE} PUBLIC vt-trace)
 ############################################################
